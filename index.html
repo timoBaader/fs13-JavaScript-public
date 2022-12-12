@@ -13,20 +13,11 @@
         * use grid to display all the countries fetched from the given url
         * no extra library, only vanilla CSS or SASS. Be creative in your own layout
      -->
-
-    <input
-      type="text"
-      id="country"
-      value="empty"
-      placeholder="Search country"
-    /><br />
-    <input
-      type="button"
-      id="button"
-      value="search"
-      onClick="getSingleCountry()"
-    />
-
+    <form id="form">
+      <input type="text" id="country" placeholder="Search country" /><br />
+      <input type="submit" value="search" />
+    </form>
+    <div id="output"></div>
     <script src="index.js"></script>
   </body>
 </html>

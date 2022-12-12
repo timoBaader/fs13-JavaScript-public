@@ -88,8 +88,29 @@ console.log(timer);
 The data fetched from url should be displayed in index.html.
 */
 
+let form = document.getElementById("form");
+
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  var country = document.getElementById("country").value;
+  console.log(country);
+
+  fetch(`https://restcountries.com/v2/name/${country}`)
+    .then((response) => response.json())
+    .then(
+      (data) =>
+        (document.getElementById("output").innerHTML = JSON.stringify(data))
+    );
+});
+
 const getAllCountries = () => {
-  /* provide your code here */
+  fetch("https://restcountries.com/v3.1/all")
+    .then((response) => response.json())
+    .then(
+      (data) =>
+        (document.getElementById("output").innerHTML = JSON.stringify(data))
+    );
 };
 
 const getSingleCountry = () => {};
@@ -129,7 +150,13 @@ cost 14, profit 0.3 , tax 24% => expected price is 30.43
 */
 class Book {
   _title;
-  constructor(title, cost, profit) {}
+  _cost;
+  _profit;
+  constructor(title, cost, profit) {
+    _title = title;
+    _cost = cost;
+    _profit = profit;
+  }
 }
 
 class TaxableBook {
