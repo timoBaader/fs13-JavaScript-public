@@ -62,7 +62,21 @@ Expected result in the console: 11 days - 13 hours - 38 minutes - 20 seconds
 const dateFrom = new Date(500000);
 const dateTo = new Date(1000000000);
 const counter = (from, to) => {
-  /* provide your code here */
+  let day = 1000 * 60 * 60 * 24;
+  let hour = 1000 * 60 * 60;
+  let minute = 1000 * 60;
+  let second = 1000;
+
+  let days = Math.floor((dateTo - dateFrom) / day);
+  let hours = Math.floor((dateTo - dateFrom - days * day) / hour);
+  let minutes = Math.floor(
+    (dateTo - dateFrom - days * day - hours * hour) / minute
+  );
+  let seconds = Math.floor(
+    (dateTo - dateFrom - days * day - hours * hour - minutes * minute) / second
+  );
+
+  return `${days} days - ${hours} hours - ${minutes} minutes - ${seconds} seconds`;
 };
 const timer = counter();
 console.log(timer);
@@ -78,21 +92,19 @@ const getAllCountries = () => {
   /* provide your code here */
 };
 
-const getSingleCountry = () => {
-  /* provide your code here */
-};
-
+const getSingleCountry = () => {};
 getAllCountries();
 
 /*
-5. Provide logic for function generateNewFolderName, which receive an array as argument. Everytime the function gets called,
+5. Provide logic for function generateNewFolderName, which receive an array as argument. Every time the function gets called,
 it should check for folder name. If the folder named 'New Folder' does not exist, it should add the name 'New Folder' to array.
 If folder 'New Folder' exists, it should add 'New Folder (1)' to array. If 'New Folder (1)' exists, it should add 'New Folder (2)'
 to array, and so on.
 */
 
 const generateNewFolderName = (existingFolders) => {
-  /*  provide your code here */
+  if (folder.length == 0) folder.push("New Folder");
+  folder.push(`New Folder (${folder.length})`);
 };
 
 let folder = [];
